@@ -11,16 +11,19 @@
  * */
 
 #include <Adafruit_PN532.h>
+
 #include "Wire.h"
 
-Adafruit_PN532 nfc(D5, D6, D7, D8);
+// clk, mi, mo, ss
+// Adafruit_PN532 nfc(D5, D6, D7, D8);
 
-// Adafruit_PN532 nfc(D4);
+// Need to Adafruit_PN532.cpp to make it reliable, see
+// https://github.com/adafruit/Adafruit-PN532/issues/80#issuecomment-650817585
+Adafruit_PN532 nfc(D4);
 
 void setup(void)
 {
   Serial.begin(115200);
-  Serial.println("14CORE | NFC - SPI Test Code TAG Reader");
   Serial.println("Initializing please wait.......");
   delay(3000);
   nfc.begin();
